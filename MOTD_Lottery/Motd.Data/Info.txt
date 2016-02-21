@@ -1,0 +1,4 @@
+﻿User can choose one box every day during a campaign.
+We don't remmeber his earlir choises so we don't mark his earlier clicked boxes.
+
+3,5h
