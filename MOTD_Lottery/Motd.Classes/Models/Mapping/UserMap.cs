@@ -4,7 +4,7 @@ using System.Data.Entity.ModelConfiguration;
 using System.Linq;
 using System.Text;
 
-namespace Motd.Data.Models.Mapping
+namespace Motd.Classes.Models.Mapping
 {
     public class UserMap : EntityTypeConfiguration<User>
     {

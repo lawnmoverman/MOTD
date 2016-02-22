@@ -4,7 +4,7 @@ using System.Data.Entity.ModelConfiguration;
 using System.Linq;
 using System.Text;
 
-namespace Motd.Data.Models.Mapping
+namespace Motd.Classes.Models.Mapping
 {
     public class CampaignLogItemMap : EntityTypeConfiguration<CampaignLogItem>
     {
@@ -19,16 +19,10 @@ namespace Motd.Data.Models.Mapping
             // Table & Column Mappings
             this.ToTable("CampaignLogItem");
             this.Property(t => t.Id).HasColumnName("Id");
-            this.Property(t => t.Description).HasColumnName("Description");
-            this.Property(t => t.UserId).HasColumnName("UserId");
+            this.Property(t => t.Description).HasColumnName("Description");            
             this.Property(t => t.LogTime).HasColumnName("LogTime");
             this.Property(t => t.isCorrectMotd).HasColumnName("isCorrectMotd");
-            this.Property(t => t.isWonAPrize).HasColumnName("isWonAPrize");
-
-            // Relationships
-            this.HasOptional(t => t.User)
-                .WithMany()
-                .HasForeignKey(d => d.UserId); 
+            this.Property(t => t.isWonAPrize).HasColumnName("isWonAPrize");            
         }
             
     }

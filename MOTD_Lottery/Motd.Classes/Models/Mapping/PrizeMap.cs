@@ -4,29 +4,27 @@ using System.Data.Entity.ModelConfiguration;
 using System.Linq;
 using System.Text;
 
-namespace Motd.Data.Models.Mapping
+namespace Motd.Classes.Models.Mapping
 {
-    public class AdminLogItemMap : EntityTypeConfiguration<AdminLogItem>
+    public class PrizeMap : EntityTypeConfiguration<Prize>
     {
-        public AdminLogItemMap()
+        public PrizeMap()
         {
+
             // Primary Key
             this.HasKey(t => t.Id);
             // Properties
+            this.Property(t => t.Name)
+                .HasMaxLength(60);
             this.Property(t => t.Description)
                 .HasMaxLength(255);
 
             // Table & Column Mappings
-            this.ToTable("AdminLogItem");
+            this.ToTable("Prize");
             this.Property(t => t.Id).HasColumnName("Id");
+            this.Property(t => t.Name).HasColumnName("Name");
             this.Property(t => t.Description).HasColumnName("Description");
-            this.Property(t => t.UserId).HasColumnName("UserId");
-            this.Property(t => t.LogTime).HasColumnName("LogTime");
 
-            // Relationships
-            this.HasOptional(t => t.User)
-                .WithMany()
-                .HasForeignKey(d => d.UserId); 
         }
     }
 }

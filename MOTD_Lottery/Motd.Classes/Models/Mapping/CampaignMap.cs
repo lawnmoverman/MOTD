@@ -4,7 +4,7 @@ using System.Data.Entity.ModelConfiguration;
 using System.Linq;
 using System.Text;
 
-namespace Motd.Data.Models.Mapping
+namespace Motd.Classes.Models.Mapping
 {
     public class CampaignMap:EntityTypeConfiguration<Campaign>
     {
@@ -29,7 +29,6 @@ namespace Motd.Data.Models.Mapping
             this.Property(t => t.StartDate).HasColumnName("StartDate");    
             this.Property(t => t.EndDate).HasColumnName("EndDate"); 
             this.Property(t => t.TimeToClick).HasColumnName("TimeToClick");
-
                        
          }
     }

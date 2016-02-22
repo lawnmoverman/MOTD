@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Motd.Data.Models
+namespace Motd.Classes.Models
 {
     public class User
     {
@@ -13,5 +13,6 @@ namespace Motd.Data.Models
         public string Email { get; set; }
         public DateTime Birthday { get; set; }        
         public bool IsFbUser { get; set; }
+        public virtual Campaign Campaign { get; set; } 
     }
 }

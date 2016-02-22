@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{605542C8-5252-47E5-A8A5-69AF3191C8A4}</ProjectGuid>
+    <ProjectGuid>{A125F639-59B1-4A0E-BE40-C8D158B6CCEC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Motd.Data</RootNamespace>
-    <AssemblyName>Motd.Data</AssemblyName>
+    <RootNamespace>Motd.Classes</RootNamespace>
+    <AssemblyName>Motd.Classes</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -42,8 +42,6 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -51,14 +49,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MotdContext.cs" />
+    <Compile Include="Models\AdminLogItem.cs" />
+    <Compile Include="Models\Box.cs" />
+    <Compile Include="Models\Campaign.cs" />
+    <Compile Include="Models\CampaignLogItem.cs" />
+    <Compile Include="Models\Mapping\AdminLogItemMap.cs" />
+    <Compile Include="Models\Mapping\BoxMap.cs" />
+    <Compile Include="Models\Mapping\CampaignLogItemMap.cs" />
+    <Compile Include="Models\Mapping\CampaignMap.cs" />
+    <Compile Include="Models\Mapping\PrizeMap.cs" />
+    <Compile Include="Models\Mapping\UserMap.cs" />
+    <Compile Include="Models\Prize.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Motd.Classes\Motd.Classes.csproj">
-      <Project>{a125f639-59b1-4a0e-be40-c8d158b6ccec}</Project>
-      <Name>Motd.Classes</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
