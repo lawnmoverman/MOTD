@@ -1,0 +1,3 @@
+ <connectionStrings>
+    <add name="DefaultConnection" connectionString="Data Source=FIRRER;Initial Catalog=motd;Integrated Security=true;" providerName="System.Data.SqlClient" />
+  </connectionStrings>

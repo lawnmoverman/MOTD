@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>List of all prizes</h1>
+</div>
+
+<div class="row">
+    <div class="col-md-4" id="divResult">
+        
+
+    </div>
+</div>
+<div class="row">
+   <button type="button" onclick="savePrize()">Save new prize</button>
+</div>
+@section Scripts
+{
+<script src="~/Scripts/App/prizeService.js"></script>
+<script src="~/Scripts/App/homeIndex.js"></script>
+
+}
