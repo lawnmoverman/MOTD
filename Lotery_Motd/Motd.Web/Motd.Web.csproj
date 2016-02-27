@@ -300,11 +300,11 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\MOTD\MOTD_Lottery\Motd.Services\Motd.Services.csproj">
+    <ProjectReference Include="..\Motd.Services\Motd.Services.csproj">
       <Project>{0b070ea6-2b7c-4893-b781-206e7ad7abab}</Project>
       <Name>Motd.Services</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\MOTD\MOTD_Lottery\Motd.Web.Models\Motd.Web.Models.csproj">
+    <ProjectReference Include="..\Motd.Web.Models\Motd.Web.Models.csproj">
       <Project>{c8b2fa98-dac4-40ac-a646-cc7a5bebed97}</Project>
       <Name>Motd.Web.Models</Name>
     </ProjectReference>
