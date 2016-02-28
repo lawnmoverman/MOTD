@@ -1,3 +1,14 @@
  <connectionStrings>
     <add name="DefaultConnection" connectionString="Data Source=FIRRER;Initial Catalog=motd;Integrated Security=true;" providerName="System.Data.SqlClient" />
   </connectionStrings>
+
+  <div class="jumbotron">
+    <h1>List of all prizes</h1>
+</div>
+
+
+</div>
+<div class="row">
+    <button type="button" onclick="savePrize()">Save new prize</button>
+</div>
+}

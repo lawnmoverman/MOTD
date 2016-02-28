@@ -16,20 +16,19 @@ namespace Motd.Web.Api
     {
 
 
-        IPrizeService servis = new PrizeService();
+        IPrizeService service = new PrizeService();
 
         // GET: api/Prize
         [HttpGet]
         [Route("GetAllPrizes")]
         public IHttpActionResult Get()
-        {
-           
-            List<PrizeViewModel> lista = servis.GetPrizes();
-            if (lista == null)
+        {           
+            List<PrizeViewModel> prizeList = service.GetPrizes();
+            if (prizeList == null)
             {
                 return NotFound();
             }
-            return Ok(lista);
+            return Ok(prizeList);
         }
 
         // GET: api/Prize/5
@@ -42,7 +41,7 @@ namespace Motd.Web.Api
         [HttpPost]
         public void Post([FromBody]PrizeViewModel value)
         {
-            servis.AddNewPrize(value);
+            service.AddNewPrize(value);
         }
 
         // PUT: api/Prize/5

@@ -1,6 +1,8 @@
-﻿using Motd.Data.Models;
+﻿using Motd.Data;
+using Motd.Data.Models;
 using Motd.Repositories.Contracts;
 using Motd.Services.Contracts;
+using Motd.Web.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,18 +13,33 @@ namespace Motd.Services
 {
     public class UserService : IUserService
     {
-        IMotdRepository<User> _userRepository = null;
+        IMotdRepository<User> _serRepository = new MotdRepository<User>(new MotdContext());
 
-        public UserService(IMotdRepository<User> userRepository)
-            : base()
+        /// <summary>
+        ///   Get list of users
+        /// </summary>
+        public List<UserViewModel> GetUsers()
         {
-            _userRepository = userRepository;
+            var list = _serRepository.Get();
+            List<UserViewModel> returnList = null;
 
-        }
+            if (list!=null)
+            {
+                returnList = new List<UserViewModel>();
+                foreach (User user in list)
+                {
+                    UserViewModel model = new UserViewModel();
+                    model.Birthday = user.Birthday;
+                    model.Email = user.Email;
+                    model.Id = user.Id;
+                    model.IsFbUser = user.IsFbUser;
+                    model.LastName = user.LastName;
+                    model.Name = user.Name;
 
-        public List<User> GetUsers()
-        {
-            return _userRepository.Get().ToList();
+                    returnList.Add(model);
+                } 
+            }
+            return returnList;
         }
     }
 }

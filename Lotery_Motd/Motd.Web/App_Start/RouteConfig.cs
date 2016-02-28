@@ -14,6 +14,12 @@ namespace Motd.Web
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "GetAllPrizes",
+                url: "prize/GetAllPrizes",
+                defaults: new { controller = "Prize", action = "GetAllPrizes", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }

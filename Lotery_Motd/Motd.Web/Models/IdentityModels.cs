@@ -29,5 +29,7 @@ namespace Motd.Web.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<Motd.Web.Models.ViewModels.PrizeViewModel> PrizeViewModels { get; set; }
     }
 }

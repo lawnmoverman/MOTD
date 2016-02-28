@@ -1,4 +1,5 @@
 ﻿using Motd.Data.Models;
+using Motd.Web.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,6 @@ namespace Motd.Services.Contracts
 {
     public interface IUserService
     {
-        List<User> GetUsers();
+        List<UserViewModel> GetUsers();
     }
 }

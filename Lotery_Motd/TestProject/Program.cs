@@ -20,18 +20,18 @@ namespace TestProject
             //PrizeService servis = new PrizeService(repository);
             //List<Prize> lista = servis.GetPrizes().ToList();
 
-            MotdContext ctx = new MotdContext();
-            IMotdRepository<User> repository = new MotdRepository<User>(ctx);
-            UserService servis2 = new UserService(repository);
-            List<User> lista = servis2.GetUsers().ToList();
+            //MotdContext ctx = new MotdContext();
+            //IMotdRepository<User> repository = new MotdRepository<User>(ctx);
+            //UserService servis2 = new UserService(repository);
+            //List<User> lista = servis2.GetUsers().ToList();
 
-            foreach (User item in lista)
-            {
-                Console.WriteLine(item.Name +" "+ item.LastName);              
+            //foreach (User item in lista)
+            //{
+            //    Console.WriteLine(item.Name +" "+ item.LastName);              
 
-            }
+            //}
 
-            Console.ReadLine();
+            //Console.ReadLine();
         }
     }
 }

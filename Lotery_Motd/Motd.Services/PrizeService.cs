@@ -11,28 +11,28 @@ using System.Text;
 namespace Motd.Services
 {
     public class PrizeService : IPrizeService
-    {
-     
-        IMotdRepository<Prize> _prizeRepositor = new MotdRepository<Prize>(new MotdContext());
+    {     
+        IMotdRepository<Prize> _prizeRepository = new MotdRepository<Prize>(new MotdContext());
 
+        /// <summary>
+        ///   Add new prize object to the list
+        /// </summary>
         public PrizeViewModel AddNewPrize(PrizeViewModel prize)
         {
             Prize model = new Prize();
             try
-            {
-               
+            {               
                 model.Description = prize.Description;
                 model.Id = prize.Id;
                 model.IsWon = prize.IsWon;
                 model.Name = prize.Name;
 
-
-                _prizeRepositor.Create(model);
-                _prizeRepositor.SaveChanges();
+                _prizeRepository.Create(model);
+                _prizeRepository.SaveChanges();
             }
             catch (Exception ex)
             {
-
+                throw ex;
             }
             PrizeViewModel prizeViewModel = new PrizeViewModel();
             prizeViewModel.Description = model.Description;
@@ -44,17 +44,12 @@ namespace Motd.Services
             return prizeViewModel;
         }
 
-
-        //public PrizeService(IMotdRepository<Prize> prizeRepositor)
-        //      : base()
-        //  {
-        //      _prizeRepositor = prizeRepositor;
-
-        //  }
-
+        /// <summary>
+        ///   Get list of prizes
+        /// </summary>
         public List<PrizeViewModel> GetPrizes()
-      {
-          List<Prize> lista=_prizeRepositor.Get().ToList();
+        {
+            var lista=_prizeRepository.Get().ToList();
             List<PrizeViewModel> returnList = null;
             if (lista != null)
             {
@@ -67,18 +62,11 @@ namespace Motd.Services
                     model.IsWon = prize.IsWon;
                     model.Name = prize.Name;
                     returnList.Add(model);
-
                 }
             }
             return returnList; 
-
-
-      }
-
-       
-      
-    }        
-
+        }  
+    }   
 }
 
 
