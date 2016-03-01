@@ -12,3 +12,25 @@
     <button type="button" onclick="savePrize()">Save new prize</button>
 </div>
 }
+
+"</td><td><a href='Delete'>Delete</a></td></tr>"
+----------------------------------------
+Http respose msg
+
+ [HttpGet]
+        [Route("GetAllPrizes")]
+        public HttpResponseMessage Get()
+        {
+            List<PrizeViewModel> prizeList = service.GetPrizes();
+            if (prizeList == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, prizeList);
+                
+            }
+            else
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "List is empty");
+            }
+           
+        }
+---------------------------------------

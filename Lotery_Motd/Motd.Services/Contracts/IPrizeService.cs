@@ -12,5 +12,6 @@ namespace Motd.Services.Contracts
     {
         List<PrizeViewModel> GetPrizes();
         PrizeViewModel AddNewPrize(PrizeViewModel prize);
+        bool DeletePrize(int id);
     }
 }

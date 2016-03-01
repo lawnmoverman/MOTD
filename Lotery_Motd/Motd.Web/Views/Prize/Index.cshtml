@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Prize Page";
 }
  <head>
     <meta charset="utf-8">
@@ -21,11 +21,13 @@
 </head>
 <body>
     <ol class="breadcrumb">
-        <p><b>Actual prize list</b></p>         
+        Actual prize list       
     </ol>     
-    
-        <div class="myContainer" id="divResult"/>
-       
+    <div>
+        
+        @Html.ActionLink(" Add new prize", "Create", "Prize")
+    </div>
+        <div class="myContainer" id="divResult"/>    
 </body>
 @section Scripts
 {   

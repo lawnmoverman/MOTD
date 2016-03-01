@@ -18,24 +18,27 @@ function getAllPrizes()
 }
 
 function ShowPrizes(listOfPrizes) {
-    var strResult = "<table class='table-bordered' align='left' width='90%'><thead><tr><th>PrizeID</th><th>Name</th><th>Description</th><th>Is prize won by user ?</th></tr></thead><tbody>";
+    var strResult = "<table class='table-bordered' align='left' width='90%'><thead><tr><th style='visibility:hidden;'>PrizeID</th><th>Name</th><th>Description</th><th>Is prize won by user ?</th><th>Actions</th></tr></thead><tbody>";
     $.each(listOfPrizes, function (index, prize) {
-        strResult += "<tr><td>" + prize.Id + "</td><td> " + prize.Name + "</td><td>" + prize.Description + "</td><td>" + prize.IsWon + "</td></tr>";
+        var del = "</td><td><a href=Delete/"; del += prize.Id; del += ">Delete  |  </a>";
+        var edit = "<a href=Edit/"; edit += prize.Id; edit += ">Edit</a></td>";
+        strResult += "<tr><td style='visibility:hidden;'>" + prize.Id + "</td><td> " + prize.Name + "</td><td>" + prize.Description + "</td><td>" + (prize.IsWon ? 'Yes' : 'No') + del + edit + "</tr>";
     });
     strResult += "</table>";
     $("#divResult").html(strResult);
+
 }
 
 function savePrize()
 {
     var prize = {};
-    prize.Name = "Nova Nagrada";
-   // prize.Description = $('#txtaddEmpid').val();
-
-    prize.Description = "Opis";
-    prize.IsWon = true;
+    prize.Name = document.getElementById('Name').value;
+    prize.Description = document.getElementById('Description').value;
+    prize.IsWon = document.getElementById('IsWon').value;;
+   
     addNewPrize(prize);
 }
+
 
 
 function addNewPrize(Prize) {
@@ -54,4 +57,22 @@ function addNewPrize(Prize) {
         }
     });
 
+}
+
+
+function deleteItem() {
+    jQuery.support.cors = true;
+    var id = 8;
+
+    $.ajax({
+        url: "http://" + window.location.host + "/api/prize/" + id,
+        type: 'DELETE',
+        contentType: "application/json;charset=utf-8",
+        success: function (data) {
+            WriteResponse(data);
+        },
+        error: function (x, y, z) {
+            alert(x + '\n' + y + '\n' + z);
+        }
+    });
 }

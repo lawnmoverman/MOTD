@@ -22,7 +22,7 @@ namespace Motd.Web.Api
         [HttpGet]
         [Route("GetAllPrizes")]
         public IHttpActionResult Get()
-        {           
+        {
             List<PrizeViewModel> prizeList = service.GetPrizes();
             if (prizeList == null)
             {
@@ -30,6 +30,7 @@ namespace Motd.Web.Api
             }
             return Ok(prizeList);
         }
+        
 
         // GET: api/Prize/5
         public string Get(int id)
@@ -49,9 +50,15 @@ namespace Motd.Web.Api
         {
         }
 
-        // DELETE: api/Prize/5
+        /// <summary>  
+        /// Delete prize from list.  
+        /// </summary>  
+        /// <param name="Uid">int id</param>  
+        /// <returns></returns> 
+        [HttpDelete]        
         public void Delete(int id)
         {
+            service.DeletePrize(id);
         }
     }
 }

@@ -1,8 +1,6 @@
-﻿
-@{
-   ViewBag.Title = "Home Page";
+﻿@{
+    ViewBag.Title = "Home Page";
 }
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -23,10 +21,32 @@
 </head>
 <body>
     <ol class="breadcrumb">
-        <li>
-            <i class="fa fa-dashboard"></i> <a>Dashboard</a>
-        </li>
+        Add new prize to list
     </ol>
-</body>
-    
 
+    <form id="formoid"  title="" method="post">
+        <div>
+            <label class="title">Prize name   </label>
+            <input type="text" id="Name" name="name">
+        </div>
+        <div>
+            <label class="title">Description</label>
+            <input type="text" id="Description" name="Description">
+        </div>
+        <div>
+            <label class="title">Is prize won </label>
+            <input type="checkbox" id="IsWon" name="IsWon">
+        </div>
+        <div>
+            <input type="button" onclick="savePrize()" id="submitButton" name="submitButton" value="Add prize">
+        </div>
+    </form>
+    <div>
+        <p></p>
+        @Html.ActionLink("Back to the list", "Index", "Prize")
+    </div>
+</body>
+@section Scripts
+{
+    <script src="~/Scripts/App/Prizes/prizeService.js"></script>   
+}   

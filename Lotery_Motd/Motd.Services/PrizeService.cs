@@ -11,7 +11,7 @@ using System.Text;
 namespace Motd.Services
 {
     public class PrizeService : IPrizeService
-    {     
+    {
         IMotdRepository<Prize> _prizeRepository = new MotdRepository<Prize>(new MotdContext());
 
         /// <summary>
@@ -21,7 +21,7 @@ namespace Motd.Services
         {
             Prize model = new Prize();
             try
-            {               
+            {
                 model.Description = prize.Description;
                 model.Id = prize.Id;
                 model.IsWon = prize.IsWon;
@@ -49,7 +49,7 @@ namespace Motd.Services
         /// </summary>
         public List<PrizeViewModel> GetPrizes()
         {
-            var lista=_prizeRepository.Get().ToList();
+            var lista = _prizeRepository.Get().ToList();
             List<PrizeViewModel> returnList = null;
             if (lista != null)
             {
@@ -64,9 +64,28 @@ namespace Motd.Services
                     returnList.Add(model);
                 }
             }
-            return returnList; 
-        }  
-    }   
+            return returnList;
+        }
+
+        /// <summary>
+        ///   Delete prize from the list
+        /// </summary>
+        public bool DeletePrize(int id)
+        {
+            List<Prize> lista = _prizeRepository.Get().ToList();
+            if (lista!=null)
+            {
+                Prize itemToDelete = lista.Find(p => p.Id == id);
+                if(itemToDelete!=null)
+                {
+                    _prizeRepository.Delete(itemToDelete);
+                    _prizeRepository.SaveChanges();
+                    return true;
+                } 
+            }
+            return false;
+        }
+    }
 }
 
 

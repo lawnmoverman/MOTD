@@ -67,6 +67,7 @@ namespace Motd.Web.Controllers
         // GET: Prize/Delete/5
         public ActionResult Delete(int id)
         {
+            ViewBag.Position = id;
             return View();
         }
 
