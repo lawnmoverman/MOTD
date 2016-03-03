@@ -30,12 +30,20 @@ namespace Motd.Web.Api
             }
             return Ok(prizeList);
         }
-        
+
 
         // GET: api/Prize/5
-        public string Get(int id)
+        [HttpGet]
+        [Route("GetPrize/{id}")]
+        public IHttpActionResult Get(int id)
         {
-            return "value";
+            List<PrizeViewModel> prizeList = service.GetPrizes();
+            PrizeViewModel prize = prizeList.Find(p => p.Id == id);
+            if (prizeList == null)
+            {
+                return NotFound();
+            }
+            return Ok(prize);
         }
 
         // POST: api/Prize

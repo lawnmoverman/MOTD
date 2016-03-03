@@ -246,6 +246,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
+    <Content Include="Scripts\App\Prizes\editFill.js" />
     <Content Include="Scripts\App\Prizes\homeIndex.js" />
     <Content Include="Scripts\App\Prizes\prizeService.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -346,6 +347,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Prize\Index.cshtml" />
     <Content Include="Views\Prize\Create.cshtml" />
+    <Content Include="Views\Prize\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

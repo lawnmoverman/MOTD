@@ -45,6 +45,7 @@ namespace Motd.Web.Controllers
         // GET: Prize/Edit/5
         public ActionResult Edit(int id)
         {
+            ViewBag.Position = id;
             return View();
         }
 

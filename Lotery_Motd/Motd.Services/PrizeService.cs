@@ -68,6 +68,26 @@ namespace Motd.Services
         }
 
         /// <summary>
+        ///   Get prize by Id
+        /// </summary>
+        public PrizeViewModel GetPrize(int id)
+        {
+            var lista = _prizeRepository.Get().ToList();
+            Prize returnPrize = lista.FirstOrDefault(p => p.Id == id);
+            PrizeViewModel model = new PrizeViewModel();
+
+            if (returnPrize != null)
+            {   
+                model.Description = returnPrize.Description;
+                model.Id = returnPrize.Id;
+                model.IsWon = returnPrize.IsWon;
+                model.Name = returnPrize.Name;
+            }
+            return model;
+        }
+
+
+        /// <summary>
         ///   Delete prize from the list
         /// </summary>
         public bool DeletePrize(int id)

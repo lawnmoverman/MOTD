@@ -34,3 +34,16 @@ Http respose msg
            
         }
 ---------------------------------------
+function ShowPrizes(listOfPrizes) {
+    var strResult = "<table class='table-bordered' align='left' width='90%'><thead><tr><th style='visibility:hidden;'>PrizeID</th><th>Name</th><th>Description</th><th>Is prize won by user ?</th><th>Actions</th></tr></thead><tbody>";
+    $.each(listOfPrizes, function (index, prize) {
+        var del = "</td><td><a href=Delete/"; del += prize.Id; del += " onClick='confirmDelete(prize.Id);'"; del += ">Delete  |  </a>";
+        var edit = "<a href=Edit/"; edit += prize.Id; edit += ">Edit</a></td>";
+        strResult += "<tr><td style='visibility:hidden;'>" + prize.Id + "</td><td> " + prize.Name + "</td><td>" + prize.Description + "</td><td>" + (prize.IsWon ? 'Yes' : 'No') + del + edit + "</tr>";
+    });
+    strResult += "</table>";
+    $("#divResult").html(strResult);
+
+}
+
+----------------------------------------------

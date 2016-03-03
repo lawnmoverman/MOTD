@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <title>@ViewBag.Title</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="~/Content/sb-admin.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <ol class="breadcrumb">
+        Edit prize details
+    </ol>
+    <div class="myContainer" id="divResult" /> 
+    <div>
+        <p></p>        
+        @Html.ActionLink("Back to the list", "Index", "Prize")
+    </div>
+</body>
+@section Scripts
+{
+    <script src="~/Scripts/App/Prizes/prizeService.js"></script>
+    <script>
+        $(document).ready(function () {
+            console.log("ready!");
+            getPrize(@ViewBag.Position);
+        });
+    </script>
+}
+
+   
+
