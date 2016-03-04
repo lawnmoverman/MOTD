@@ -17,14 +17,15 @@ function getAllPrizes()
 }
 
 function getPrize(id) {
-    var temp = "http://" + window.location.host + "/api/Prize/GetPrize/1";
-    $.ajax({        
-        url: "http://" + window.location.host + "/api/Prize/GetPrize/1",
+    var _url = "http://" + window.location.host + "/api/Prize/GetPrize/" + id;
+    $.ajax({
+        url: _url,
         type: 'GET',
         dataType: 'JSON',
         success: function (data) {
-            ShowPrize(data);
-
+            $("#Name").val(data.Name);
+            $("#Description").val(data.Description);
+            $("#IsWon").val(data.IsWon);
         },
         error: function (x, y, z) {
             alert(x + '\n' + y + '\n' + z);
@@ -46,16 +47,7 @@ function ShowPrizes(listOfPrizes) {
 }
 
 
-function ShowPrize(Prize) {
-    var strResult = "<form id='formoid' title='' method='post'><div><label class='title'>Prize name";
-    strResult+="</label><input type='text' id='Name' name='name' value='" +Prize.Name  + "'>";
-    strResult += "</div><div><label class='title'>Description</label><input type='text' id='Description' name='Description' value='" + Prize.Description + "'>";
-    strResult+="</div><div><label class='title'>Is prize won </label><input type='checkbox' id='IsWon' name='IsWon' value='" +Prize.IsWon +"'>";
-    strResult += "</div><div><input type='button' onclick='savePrize()' id='submitButton' name='submitButton' value='Save changes'>   "; 
-    strResult += "<input type='button' onclick=window.location.href id='cancelButton' name='cancelButton' value='Cancel'></div></form>";
-    strResult += "</table>";
-    $("#divResult").html(strResult);
-}
+
 
 
 function savePrize()
@@ -68,6 +60,15 @@ function savePrize()
     addNewPrize(prize);
 }
 
+function editPrize(id) {
+    var prize = {};
+    prize.Id = id;
+    prize.Name = document.getElementById('Name').value;
+    prize.Description = document.getElementById('Description').value;
+    prize.IsWon = document.getElementById('IsWon').value;;
+
+    addEditedPrize(prize);
+}
 
 
 function addNewPrize(Prize) {
@@ -78,7 +79,7 @@ function addNewPrize(Prize) {
         data: JSON.stringify(Prize),
         contentType: "application/json;charset=utf-8",
         success: function (data) {
-            alert("Uspešno sačuvano !");
+            alert("Successfully saved  !");
 
         },
         error: function (x, y, z) {
@@ -86,6 +87,23 @@ function addNewPrize(Prize) {
         }
     });
 
+}
+
+function addEditedPrize(Prize) {
+    var _url = "http://" + window.location.host + "/api/Prize/" + Prize.Id;
+    $.ajax({
+        url: _url,
+        type: 'PUT',
+        data: JSON.stringify(Prize),
+        contentType: "application/json;charset=utf-8",
+        success: function (data) {
+            alert("Changes successfully saved !");
+            window.location.href = '../Index';
+        },
+        error: function (x, y, z) {
+            alert(x + '\n' + y + '\n' + z);
+        }
+    });
 }
 
 

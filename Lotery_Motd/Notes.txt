@@ -47,3 +47,15 @@ function ShowPrizes(listOfPrizes) {
 }
 
 ----------------------------------------------
+sacuvano zbog prevelikog truda :)
+
+function ShowPrize(Prize) {
+    var strResult = "<form id='formoid' title='' method='post'><div><label class='title'>Prize name";
+    strResult+="</label><input type='text' id='Name' name='name' value='" +Prize.Name  + "'>";
+    strResult += "</div><div><label class='title'>Description</label><input type='text' id='Description' name='Description' value='" + Prize.Description + "'>";
+    strResult+="</div><div><label class='title'>Is prize won </label><input type='checkbox' id='IsWon' name='IsWon' value='" +Prize.IsWon +"'>";
+    strResult += "</div><div><input type='button' onclick='savePrize()' id='submitButton' name='submitButton' value='Save changes'>   "; 
+    strResult += "<input type='button' onclick=window.location.href id='cancelButton' name='cancelButton' value='Cancel'></div></form>";
+    strResult += "</table>";
+    $("#divResult").html(strResult);
+}

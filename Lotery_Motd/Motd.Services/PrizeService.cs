@@ -105,6 +105,39 @@ namespace Motd.Services
             }
             return false;
         }
+
+        /// <summary>
+        ///   Update prize details
+        /// </summary>
+        public PrizeViewModel EditPrize(PrizeViewModel prize)
+        {
+            var lista = _prizeRepository.Get().ToList();
+            Prize FoundPrize = lista.FirstOrDefault(p => p.Id == prize.Id);
+            
+            try
+            {
+                FoundPrize.Description = prize.Description;
+                FoundPrize.Id = prize.Id;
+                FoundPrize.IsWon = prize.IsWon;
+                FoundPrize.Name = prize.Name;
+
+                _prizeRepository.Update(FoundPrize);
+                _prizeRepository.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            PrizeViewModel prizeViewModel = new PrizeViewModel();
+            prizeViewModel.Description = FoundPrize.Description;
+            prizeViewModel.Id = FoundPrize.Id;
+            prizeViewModel.IsWon = FoundPrize.IsWon;
+            prizeViewModel.Name = FoundPrize.Name;
+
+
+            return prizeViewModel;
+        }
+       
     }
 }
 

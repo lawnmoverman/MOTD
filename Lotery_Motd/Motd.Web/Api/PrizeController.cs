@@ -54,8 +54,10 @@ namespace Motd.Web.Api
         }
 
         // PUT: api/Prize/5
-        public void Put(int id, [FromBody]string value)
+        [HttpPut]
+        public void Put(int id, [FromBody]PrizeViewModel value)
         {
+            service.EditPrize(value);
         }
 
         /// <summary>  

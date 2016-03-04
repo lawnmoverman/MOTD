@@ -1,5 +1,7 @@
 ﻿@{
     ViewBag.Title = "Home Page";
+    var json = Json.Encode("data");
+    Response.Write(json);
 }
 <head>
     <meta charset="utf-8">
@@ -19,15 +21,33 @@
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 </head>
-<body>
+<body>    
     <ol class="breadcrumb">
-        Edit prize details
+        Add new prize to list
     </ol>
-    <div class="myContainer" id="divResult" /> 
+
+    <form id="formoid" title="" method="post">
+        <div>
+            <label class="title">Prize name</label>
+            <input type="text" id="Name" name="Name" value="data.Name">
+        </div>
+        <div>
+            <label class="title">Description</label>           
+            ​<textarea id="Description" rows="10" cols="70" value="data.Name"></textarea>
+        </div>
+        <div>
+            <label class="title">Is prize won </label>
+            <input type="checkbox" id="IsWon" name="IsWon" value=prize.IsWon>
+        </div>
+        <div>
+            <input type="button" onclick="editPrize(@ViewBag.Position)" id="editButton" name="editButton" value="Save Changes">
+            <input type="button" onclick="window.location.href='../Index'" id="cancelButton" name="cancelButton" value="Cancel">
+        </div>
+    </form>
     <div>
-        <p></p>        
-        @Html.ActionLink("Back to the list", "Index", "Prize")
-    </div>
+        <p></p>
+        @Html.ActionLink("Back to the list", "Index", "Prize/Index")
+    </div>    
 </body>
 @section Scripts
 {
