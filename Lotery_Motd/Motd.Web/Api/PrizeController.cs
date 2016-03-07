@@ -14,11 +14,12 @@ namespace Motd.Web.Api
     [RoutePrefix("api/Prize")]
     public class PrizeController : ApiController
     {
-
-
         IPrizeService service = new PrizeService();
 
-        // GET: api/Prize
+        /// <summary>
+        ///  Get all prizes.
+        /// </summary>       
+        /// <returns>List of prizes </returns>
         [HttpGet]
         [Route("GetAllPrizes")]
         public IHttpActionResult Get()
@@ -31,8 +32,12 @@ namespace Motd.Web.Api
             return Ok(prizeList);
         }
 
-
         // GET: api/Prize/5
+        /// <summary>
+        ///   Gets single prize Prize object.
+        /// </summary>
+        /// <param name="id"> primary key. </param>
+        /// <returns>Single PrizeViewModel object. </returns>
         [HttpGet]
         [Route("GetPrize/{id}")]
         public IHttpActionResult Get(int id)
@@ -47,28 +52,62 @@ namespace Motd.Web.Api
         }
 
         // POST: api/Prize
+        /// <summary>
+        ///   Add new prize.
+        /// </summary>
+        /// <param name="prize"> Prize view model. </param>        
         [HttpPost]
-        public void Post([FromBody]PrizeViewModel value)
-        {
-            service.AddNewPrize(value);
+        public IHttpActionResult Post([FromBody]PrizeViewModel prize)
+        {  
+            if (!ModelState.IsValid)
+            {
+                return BadRequest("Prize object can not be added !");
+            }
+            else
+            {
+                service.AddNewPrize(prize);
+                return Ok(prize);
+            }          
+            
         }
 
         // PUT: api/Prize/5
+        /// <summary>
+        /// Update Prize object.
+        /// </summary>
+        /// <param name="id"> primary key. </param>
+        /// <param name="prize"> Prize view model. </param>        
         [HttpPut]
-        public void Put(int id, [FromBody]PrizeViewModel value)
-        {
-            service.EditPrize(value);
+        public IHttpActionResult Put(int id, [FromBody]PrizeViewModel prize)
+        {    
+            if (!ModelState.IsValid)
+            {
+                return BadRequest("Prize object can not be added !");
+            }
+            else
+            {
+                var _prize = service.EditPrize(prize);
+                return Ok(prize);
+            }
         }
 
-        /// <summary>  
-        /// Delete prize from list.  
-        /// </summary>  
-        /// <param name="Uid">int id</param>  
-        /// <returns></returns> 
+        /// <summary>
+        ///   Delete prize.
+        /// </summary>
+        /// <param name="id"> primary key. </param>       
         [HttpDelete]        
-        public void Delete(int id)
+        public IHttpActionResult Delete(int id)
         {
-            service.DeletePrize(id);
+            if(id >= 0)
+            {
+                service.DeletePrize(id);
+                return Ok(id);
+            }
+            else
+            {
+                return BadRequest("Prize object can not be deleted !");
+            }
+           
         }
     }
 }

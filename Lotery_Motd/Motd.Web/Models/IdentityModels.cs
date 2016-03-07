@@ -31,5 +31,6 @@ namespace Motd.Web.Models
         }
 
         public System.Data.Entity.DbSet<Motd.Web.Models.ViewModels.PrizeViewModel> PrizeViewModels { get; set; }
+        
     }
 }

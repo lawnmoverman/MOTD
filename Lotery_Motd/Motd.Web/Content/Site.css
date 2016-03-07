@@ -22,3 +22,7 @@ select,
 textarea {
     max-width: 280px;
 }
+/* My input width */
+input[type="text"] {
+    width: 400px;
+}

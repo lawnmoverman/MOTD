@@ -12,11 +12,12 @@ namespace Motd.Services
 {
     public class PrizeService : IPrizeService
     {
-        IMotdRepository<Prize> _prizeRepository = new MotdRepository<Prize>(new MotdContext());
-
         /// <summary>
-        ///   Add new prize object to the list
+        /// Metods descriptions are in interface IPrizeService
         /// </summary>
+       
+        IMotdRepository<Prize> _prizeRepository = new MotdRepository<Prize>(new MotdContext());
+       
         public PrizeViewModel AddNewPrize(PrizeViewModel prize)
         {
             Prize model = new Prize();
@@ -43,10 +44,7 @@ namespace Motd.Services
 
             return prizeViewModel;
         }
-
-        /// <summary>
-        ///   Get list of prizes
-        /// </summary>
+      
         public List<PrizeViewModel> GetPrizes()
         {
             var lista = _prizeRepository.Get().ToList();
@@ -66,10 +64,7 @@ namespace Motd.Services
             }
             return returnList;
         }
-
-        /// <summary>
-        ///   Get prize by Id
-        /// </summary>
+        
         public PrizeViewModel GetPrize(int id)
         {
             var lista = _prizeRepository.Get().ToList();
@@ -85,30 +80,32 @@ namespace Motd.Services
             }
             return model;
         }
-
-
-        /// <summary>
-        ///   Delete prize from the list
-        /// </summary>
+      
         public bool DeletePrize(int id)
         {
             List<Prize> lista = _prizeRepository.Get().ToList();
-            if (lista!=null)
+            try
             {
-                Prize itemToDelete = lista.Find(p => p.Id == id);
-                if(itemToDelete!=null)
+                
+                if (lista != null)
                 {
-                    _prizeRepository.Delete(itemToDelete);
-                    _prizeRepository.SaveChanges();
-                    return true;
-                } 
+                    Prize itemToDelete = lista.Find(p => p.Id == id);
+                    if (itemToDelete != null)
+                    {
+                        _prizeRepository.Delete(itemToDelete);
+                        _prizeRepository.SaveChanges();
+                        return true;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
             return false;
         }
 
-        /// <summary>
-        ///   Update prize details
-        /// </summary>
         public PrizeViewModel EditPrize(PrizeViewModel prize)
         {
             var lista = _prizeRepository.Get().ToList();
@@ -128,14 +125,8 @@ namespace Motd.Services
             {
                 throw ex;
             }
-            PrizeViewModel prizeViewModel = new PrizeViewModel();
-            prizeViewModel.Description = FoundPrize.Description;
-            prizeViewModel.Id = FoundPrize.Id;
-            prizeViewModel.IsWon = FoundPrize.IsWon;
-            prizeViewModel.Name = FoundPrize.Name;
 
-
-            return prizeViewModel;
+            return prize;
         }
        
     }

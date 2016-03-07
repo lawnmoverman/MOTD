@@ -15,38 +15,47 @@
     <!-- Bootstrap Core CSS -->
     <link href="~/Content/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="~/Content/sb-admin.css" rel="stylesheet">
+    <link href="~/Content/sb-admin.css" rel="stylesheet">    
+    <link href="~/Content/Site.css" rel="stylesheet" />
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 </head>
 <body>
     <ol class="breadcrumb">
         Add new prize to list
-    </ol>
-
-    <form id="formoid"  title="" method="post">
+    </ol>   
+    <form id="formoid" title="" method="post">
         <div>
-            <label class="title">Prize name   </label>
-            <input type="text" id="Name" name="name">
-        </div>
-        <div>
-            <label class="title">Description</label>
-            <input type="text" id="Description" name="Description">
-        </div>
-        <div>
-            <label class="title">Is prize won </label>
-            <input type="checkbox" id="IsWon" name="IsWon">
-        </div>
-        <div>
+            <table>                    
+                <tr><td><label class="title">Prize name</label></td></tr>
+                <tr><td><input type="text" id="Name" name="name"></td></tr>
+                <tr><td><label class="title">Description</label></td> </tr>  
+                <tr><td>​<textarea id="Description" rows="10" cols="70" value="data.Name"></textarea></td>  
+                <tr><td><label class="title">Is prize won </label></td> </tr>  
+                <tr><td><input type="checkbox" id="IsWon" name="IsWon" value="false"></td></tr>                  
+            </table>
+            <p></p>
+            <p></p>
             <input type="button" onclick="savePrize()" id="submitButton" name="submitButton" value="Add prize">
+            <input type="button" onclick="window.location.href='../Prize/Index'" id="cancelButton" name="cancelButton" value="Cancel">
         </div>
-    </form>
-    <div>
-        <p></p>
-        @Html.ActionLink("Back to the list", "Index", "Prize")
-    </div>
+    </form>    
 </body>
 @section Scripts
 {
     <script src="~/Scripts/App/Prizes/prizeService.js"></script>   
 }   
+
+
+
+
+
+
+
+
+
+
+    
+   
+       
+    
